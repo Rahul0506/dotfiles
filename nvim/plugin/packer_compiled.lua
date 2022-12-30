@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["cmp-buffer"] = {
     after_files = { "/home/rahulg/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
     load_after = {
@@ -114,10 +119,25 @@ _G.packer_plugins = {
     path = "/home/rahulg/.local/share/nvim/site/pack/packer/opt/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   harpoon = {
     loaded = true,
     path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["lsp-zero.nvim"] = {
+    loaded = true,
+    path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
   ["lspkind-nvim"] = {
     after = { "nvim-cmp" },
@@ -133,6 +153,16 @@ _G.packer_plugins = {
     path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["material.nvim"] = {
     loaded = true,
     path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/material.nvim",
@@ -143,8 +173,13 @@ _G.packer_plugins = {
     path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/nord.nvim",
     url = "https://github.com/shaunsingh/nord.nvim"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/rahulg/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-cmp"] = {
-    after = { "cmp-path", "cmp-buffer", "cmp-nvim-lsp", "cmp-nvim-lua" },
+    after = { "cmp-nvim-lsp", "cmp-path", "cmp-nvim-lua", "cmp-buffer" },
     config = { " require('plugin-configs.cmp') " },
     load_after = {
       ["lspkind-nvim"] = true
@@ -212,26 +247,26 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
- require('plugin-configs.treesitter') 
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
- require('plugin-configs.lspconfig') 
-time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
  require('plugin-configs.nvim-tree') 
 time([[Config for nvim-tree.lua]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
- require('plugin-configs.telescope') 
-time([[Config for telescope.nvim]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
  require('plugin-configs.lualine') 
 time([[Config for lualine.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+ require('plugin-configs.treesitter') 
+time([[Config for nvim-treesitter]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+ require('plugin-configs.telescope') 
+time([[Config for telescope.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+ require('plugin-configs.lspconfig') 
+time([[Config for nvim-lspconfig]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

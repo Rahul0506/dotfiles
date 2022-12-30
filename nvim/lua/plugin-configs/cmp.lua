@@ -1,6 +1,9 @@
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local luasnip = require("luasnip")
+
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup {
     mapping = cmp.mapping.preset.insert {
@@ -29,6 +32,7 @@ cmp.setup {
         { name = "nvim_lua" }, -- For nvim-lua
         { name = "path" }, -- for path completion
         { name = "buffer", keyword_length = 2 }, -- for buffer word completion
+        { name = "luasnip", keyword_length = 2 }, -- snippets
     },
     completion = {
         keyword_length = 1,
@@ -48,6 +52,11 @@ cmp.setup {
             },
         },
     },
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end
+    }
 }
 
 --  see https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu

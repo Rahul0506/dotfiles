@@ -34,7 +34,6 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} },
         config = [[ require('plugin-configs.telescope') ]]
     }
-
     use {
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make"
@@ -54,7 +53,6 @@ return require('packer').startup(function(use)
 
     -- Auto complete stuff
     use { "onsails/lspkind-nvim", event = "VimEnter" }
-
     -- A completion plugin for neovim coded in Lua.
     use {
         "hrsh7th/nvim-cmp",
@@ -66,9 +64,35 @@ return require('packer').startup(function(use)
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" } -- nvim-cmp source for buffer words.
     use { "hrsh7th/cmp-path", after = "nvim-cmp" } -- nvim-cmp source for filesystem paths.
 
-    -- Common LSP configs
+    -- LSP Setup
     use {
         "neovim/nvim-lspconfig",
         config = [[ require('plugin-configs.lspconfig') ]]
     }
+    use { 'williamboman/mason.nvim' }
+    use { 'williamboman/mason-lspconfig.nvim' }
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
+
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lua'},
+
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
+    }
+
+    -- Linting and formatters
+    use { 'jose-elias-alvarez/null-ls.nvim' }
 end)
