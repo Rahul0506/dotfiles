@@ -1,30 +1,24 @@
 local exec = vim.api.nvim_exec -- execute Vimscript
 local set = vim.opt -- global options
 local cmd = vim.cmd -- execute Vim commands
-local fn = vim.fn            -- call Vim functions
+local fn = vim.fn -- call Vim functions
 local g = vim.g -- global variables
-
-cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=grey") -- to Show whitespace, MUST be inserted BEFORE the colorscheme command
-g.material_style = "deep ocean"
-cmd("colorscheme material")
-set.termguicolors = true
-
 
 -- Whitespace stuff
 set.list = false
 set.listchars = {
-    nbsp = "⦸", -- CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-    extends = "»", -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
-    precedes = "«", -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
-    tab = "▷─", -- WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7) + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
-    trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
-    space = " "
+	nbsp = "⦸", -- CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+	extends = "»", -- RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+	precedes = "«", -- LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+	tab = "▷─", -- WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7) + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+	trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
+	space = " ",
 }
 set.fillchars = {
-    diff = "∙", -- BULLET OPERATOR (U+2219, UTF-8: E2 88 99)
-    eob = " ", -- NO-BREAK SPACE (U+00A0, UTF-8: C2 A0) to suppress ~ at EndOfBuffer
-    fold = "·", -- MIDDLE DOT (U+00B7, UTF-8: C2 B7)
-    -- vert = " " -- remove ugly vertical lines on window division
+	diff = "∙", -- BULLET OPERATOR (U+2219, UTF-8: E2 88 99)
+	eob = " ", -- NO-BREAK SPACE (U+00A0, UTF-8: C2 A0) to suppress ~ at EndOfBuffer
+	fold = "·", -- MIDDLE DOT (U+00B7, UTF-8: C2 B7)
+	-- vert = " ", -- remove ugly vertical lines on window division
 }
 
 set.splitbelow = true -- open horizontal splits below current window
@@ -37,7 +31,7 @@ set.showmatch = true -- show the matching part of the pair for [] {} and ()
 set.cursorline = true -- highlight current line
 set.number = true -- show line numbers
 set.relativenumber = true -- show relative line number
-set.numberwidth = 5
+set.numberwidth = 4
 set.ignorecase = true -- ignore case sensitive while searching
 set.smartcase = true -- smart case: case sensitive when upper-cased
 set.scrolloff = 10 -- when scrolling, keep cursor 1 lines away from screen border
@@ -64,9 +58,9 @@ set.wildignore = set.wildignore + "*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*
 set.wildignorecase = true -- ignore file and dir name cases in cmd-completion
 
 -- Mouse interaction
--- set.mouse = a  -- Enable mouse in several mode
+set.mouse = "a" -- Enable mouse in several mode
 -- set.mousemodel = popup  -- Set the behaviour of mouse
--- set.mousescroll = "ver:1,hor:6"
+set.mousescroll = "ver:1,hor:6"
 
 -- completion options
 set.completeopt = "menuone,noselect,noinsert"
@@ -74,12 +68,11 @@ set.completeopt = "menuone,noselect,noinsert"
 cmd([[au BufWritePre * :%s/\s\+$//e]])
 
 exec(
-  [[
+	[[
   augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200, on_visual=true}
   augroup end
 ]],
-  false
+	false
 )
-

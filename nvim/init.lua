@@ -1,3 +1,2 @@
-require('plugins')
-require('configs')
-require('keymaps')
+require("custom.core")
+require("custom.lazy")
